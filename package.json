@@ -1,0 +1,21 @@
+{
+  "name": "aoc##",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ./scripts/start.js"
+  },
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^20.10.2",
+    "nodemon": "^3.0.2",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.3.2"
+  },
+  "dependencies": {
+    "get-caller-file": "^2.0.5",
+    "shelljs": "^0.8.5"
+  }
+}
