@@ -43,4 +43,10 @@ export default class Utils{
     static splitTrim(s: string, delimiter: string){
         return s.split(delimiter).map(s => s.trim()).filter(s => s.length > 0)
     }
+
+    static removeIndecesFromArray<T>(arr: T[], ix: number[]){
+        let copy = [...arr];
+        [...ix].sort().forEach((i, r) => copy.splice(i - r, 1))
+        return copy
+    }
 }
