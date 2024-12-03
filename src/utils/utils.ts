@@ -49,4 +49,13 @@ export default class Utils{
         [...ix].sort().forEach((i, r) => copy.splice(i - r, 1))
         return copy
     }
+
+    static matches(input: string, regex: RegExp) : RegExpMatchArray[] {
+        let matches: RegExpMatchArray[] = [];
+        let current: RegExpMatchArray | null;
+        while (current = regex.exec(input)) {
+            matches.push(current);
+        }
+        return matches;
+    }
 }
