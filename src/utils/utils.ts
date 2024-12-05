@@ -34,8 +34,6 @@ export default class Utils{
             .map(i => Number.parseInt(i))
     }
 
-    //
-
     static adding(prev, c){
         return prev+c
     }
@@ -57,5 +55,17 @@ export default class Utils{
             matches.push(current);
         }
         return matches;
+    }
+
+    static arrayEquals(a, b) {
+        return Array.isArray(a) &&
+            Array.isArray(b) &&
+            a.length === b.length &&
+            a.every((val, index) => val === b[index]);
+    }
+
+    static getMiddleItem<T>(arr: T[]){
+        let index = Math.trunc(arr.length/2)
+        return arr[index]
     }
 }
