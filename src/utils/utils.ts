@@ -12,7 +12,7 @@ export default class Utils{
         this.testing = testing;
     }
 
-    static readFile(){
+    static readFile(testing: boolean = this.testing){
         const file = getCallerFile()
             .split(path.sep)
             .slice(0, -1)
