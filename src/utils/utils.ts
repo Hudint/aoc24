@@ -19,7 +19,9 @@ export default class Utils{
             .concat(this.testing ? "testinput.txt" : "input.txt")
             .join(path.sep);
         console.log(`Reading File ${file}...`)
-        return readFileSync(file, {encoding: "utf-8"}).toString()
+        let result = readFileSync(file, {encoding: "utf-8"}).toString()
+        console.log("Done!")
+        return result
     }
 
     static splitToLines(str: string){
@@ -67,5 +69,31 @@ export default class Utils{
     static getMiddleItem<T>(arr: T[]){
         let index = Math.trunc(arr.length/2)
         return arr[index]
+    }
+
+    private static arrOp(ar1: number[], ar2: number[], op: (n: number, n2: number) => number) : number[] {
+        if(ar1.length != ar2.length)
+            throw new Error("Arrays dont have the same size! " + ar1.length + "-" + ar2.length)
+        let result = [];
+        for(let i = 0; i < ar1.length; i++){
+            result[i] = op(ar1[i], ar2[i]);
+        }
+        return result;
+    }
+
+    static addOpArray(ar1: number[], ar2: number[]){
+        return this.arrOp(ar1, ar2, (n, n2) => n + n2)
+    }
+
+    static substractOpArray(ar1: number[], ar2: number[]){
+        return this.arrOp(ar1, ar2, (n, n2) => n - n2)
+    }
+
+    static multiplyOpArray(ar: number[], factor: number) {
+        return this.arrOp(ar, Array(ar.length).fill(factor), (n,n2) => n*n2)
+    }
+
+    static validPosition(fields: any[][], pos: [number, number]){
+        return pos[0] >= 0 && pos[0] < fields.length && pos[1] >= 0 && pos[1] < fields[pos[0]].length
     }
 }
