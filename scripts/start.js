@@ -20,7 +20,7 @@ console.clear()
 console.log(`You can get the Puzzle here: https://adventofcode.com/${year}/day/${day}`)
 console.log(`You can get the input here: https://adventofcode.com/${year}/day/${day}/input`)
 
-spawn(/^win/.test(process.platform) ? 'nodemon.cmd' : "nodemon", ["-x", "ts-node", `src/${folderName}/index.ts`], {
+spawn(/^win/.test(process.platform) ? 'nodemon.cmd' : "nodemon ", ["-e", "txt,json,ts", "-x", "ts-node", `src/${folderName}/index.ts`], {
     stdio: "inherit",
 })
 
