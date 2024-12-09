@@ -1,8 +1,8 @@
 import { utimes } from "fs";
 import Utils from "../utils/utils";
 
-Utils.setTesting(false)
-const input = Utils.readFile()
+Utils.getFileUtils().setTesting(false)
+const input = Utils.getFileUtils().readFile()
 
 const VS = [
     [-1, 0],

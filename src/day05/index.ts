@@ -1,7 +1,7 @@
 import Utils from "../utils/utils";
 
-Utils.setTesting(false)
-const input = Utils.readFile()
+Utils.getFileUtils().setTesting(false)
+const input = Utils.getFileUtils().readFile()
 
 const solvePart1 = (input: string) => {
     const lines = Utils.splitToLines(input);
@@ -30,7 +30,7 @@ const solvePart1 = (input: string) => {
         return sorted
     })
 
-    return lists.map(list => Utils.getMiddleItem(list)).reduce(Utils.adding, 0)
+    return lists.map(list => Utils.getArrayUtils().getMiddleItem(list)).reduce(Utils.adding, 0)
 }
 
 const solvePart2 = (input: string) => {
@@ -60,7 +60,7 @@ const solvePart2 = (input: string) => {
         return !sorted
     }).map(line =>([...line]).sort((b,a) => (rules[a]?.includes(b) ? 1 : (rules[b]?.includes(a) ? -1 : 0))))
 
-    return lists.map(list => Utils.getMiddleItem(list)).reduce(Utils.adding, 0)
+    return lists.map(list => Utils.getArrayUtils().getMiddleItem(list)).reduce(Utils.adding, 0)
 }
 
 console.log(`Solution for Part 1:`, solvePart1(input))

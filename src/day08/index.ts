@@ -1,4 +1,6 @@
-import Utils, {Position} from "../utils/utils";
+import { Position } from "../utils/fieldUtils";
+import FileUtils from "../utils/fileUtils";
+import Utils from "../utils/utils";
 
 
 const prep = (input: string) => {
@@ -16,8 +18,8 @@ const prep = (input: string) => {
 const solvePart1 = (input: string) => {
     const {xLength, yLength, frequencies, field} = prep(input)
 
-    const antiNodes = Utils.onlyUnique(Array.from(frequencies.values())
-        .map(f => Utils.getPositionsFromField(field, f))
+    const antiNodes = Utils.getArrayUtils().onlyUnique(Array.from(frequencies.values())
+        .map(f => Utils.getFieldUtils().getPositionsFromField(field, f))
         .flatMap(positions =>
             Utils.generateCombinationsWithoutDoubledValues(2, positions)
                 .map(([p1, p2]) =>
@@ -34,8 +36,8 @@ const solvePart1 = (input: string) => {
 const solvePart2 = (input: string) => {
     const {xLength, yLength, frequencies, field} = prep(input)
 
-    const antiNodes = Utils.onlyUnique(Array.from(frequencies.values())
-        .map(f => Utils.getPositionsFromField(field, f))
+    const antiNodes = Utils.getArrayUtils().onlyUnique(Array.from(frequencies.values())
+        .map(f => Utils.getFieldUtils().getPositionsFromField(field, f))
         .flatMap(positions =>
             Utils.generateCombinationsWithoutDoubledValues(2, positions)
                 .flatMap(([p1, p2]) => {
@@ -59,5 +61,5 @@ const solvePart2 = (input: string) => {
     return "\n" + field.map(row => row.join("")).join("\n") + "\n" + antiNodes.length
 }
 
-console.log(`Solution for Part 1:`, solvePart1(Utils.readFile(false)))
-console.log(`Solution for Part 2:`, solvePart2(Utils.readFile(false)))
+console.log(`Solution for Part 1:`, solvePart1(FileUtils.readFile(false)))
+console.log(`Solution for Part 2:`, solvePart2(FileUtils.readFile(false)))

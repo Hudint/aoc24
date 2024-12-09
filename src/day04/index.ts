@@ -1,7 +1,7 @@
 import Utils from "../utils/utils";
 
-Utils.setTesting(false)
-const input = Utils.readFile()
+Utils.getFileUtils().setTesting(false)
+const input = Utils.getFileUtils().readFile()
 
 const XMAS = "XMAS"
 function searchForXmas(matrix: string[][], x: number, y:number){

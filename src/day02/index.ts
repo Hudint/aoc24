@@ -1,7 +1,7 @@
 import Utils from "../utils/utils";
 
-Utils.setTesting(false)
-const input = Utils.readFile()
+Utils.getFileUtils().setTesting(false)
+const input = Utils.getFileUtils().readFile()
 
 const solvePart1 = (input: string) => {
     const lines = Utils.splitToLines(input);
@@ -43,7 +43,7 @@ const solvePart2 = (input: string) => {
 
     const safeLines = numLines.map(line => {
         let lerr = getLineErrors(line);
-        let rems = Array.from(lerr.values()).map(i => getLineErrors(Utils.removeIndecesFromArray(line, [i])).size === 0).some(v => v)
+        let rems = Array.from(lerr.values()).map(i => getLineErrors(Utils.getArrayUtils().removeIndecesFromArray(line, [i])).size === 0).some(v => v)
         return lerr.size == 0 || rems
     })
     return safeLines.filter(v => v).length
