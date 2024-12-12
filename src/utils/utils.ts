@@ -90,6 +90,10 @@ export default class Utils {
         return result;
     }
 
+    static mod(n: number, mod: number){
+        return ((n % mod) + mod) % mod
+    }
+
 
 
     static getArrayUtils(){

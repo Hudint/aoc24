@@ -23,10 +23,18 @@ export default class FieldUtils {
     
     private constructor() {}
 
+    static positionToString(postion: Position){
+        return `${postion.x}#${postion.y}`
+    }
+
     static getDirections() : Direction[] {
         return Object.keys(Direction)
             .map(d => Number.parseInt(d))
             .filter(d => !isNaN(d))
+    }
+
+    static getNeigbors(postion: Position){
+        return this.getDirections().map(direction => this.add(DirectionsOffsets[direction], postion))
     }
 
     static operation(pos1: Position, pos2: Position, op: (n1: number, n2: number) => number): Position {
@@ -40,7 +48,7 @@ export default class FieldUtils {
         return this.operation(pos1, pos2, (n1,n2) => n1+n2)
     }
 
-    static linesToField(lines: string[]) {
+    static linesToNumberField(lines: string[]) {
         return lines.map(row => row.split("").map(n => Number.parseInt(n)))
     }
 

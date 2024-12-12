@@ -6,7 +6,7 @@ import Utils from "../utils/utils";
 
 const prep = (input: string) => {
     const lines = Utils.splitToLines(input)
-    const field = FieldUtils.linesToField(lines)
+    const field = FieldUtils.linesToNumberField(lines)
 
     function scoreTrailHead(start: Position, distinct: boolean){
         if(field[start.x][start.y] !== 0)

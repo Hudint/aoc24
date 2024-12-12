@@ -55,4 +55,8 @@ export default class ArrayUtils {
         }
         return -1
     }
+
+    static containsObjectEquals<T>(arr: T[], value: T){
+        return this.findIndexFrom(arr, v => Utils.objectEquals(v, value)) !== -1
+    }
 }
